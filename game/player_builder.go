@@ -5,6 +5,7 @@ type PlayerBuilder interface {
 	SetStrength() PlayerBuilder
 	SetDefence() PlayerBuilder
 	SetSpeed() PlayerBuilder
+	SetLuck() PlayerBuilder
 	Build() Player
 }
 
