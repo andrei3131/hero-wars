@@ -4,7 +4,7 @@ sudo: required
 
 language: go
 go:
-  - master
+  - 1.11.x
 
 env:
   - GO111MODULE=on
@@ -14,7 +14,6 @@ notifications:
 
 go_import_path: github.com/pkg/hero-wars
 
-
 script: 
-  - echo "Running the tests!"
+  - echo "Running the script"
   - make build
