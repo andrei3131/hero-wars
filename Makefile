@@ -4,8 +4,8 @@ CMDDIR = ./cmd
 TESTDIR = ./test
 VERSION = 0.0.1-dev
 
-# test:
-# 	go test -v ./ ...
+test:
+	go test -v -race github.com/andrei3131/hero-wars
 
 build-all: build-mac build-linux
 
