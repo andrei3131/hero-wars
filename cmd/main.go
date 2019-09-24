@@ -1,9 +1,17 @@
 package main
 
 import (
+	"log"
 	"fmt"
+	"github.com/hero-wars/config"
 )
 
+
 func main() {
-	fmt.Printf("%s\n", "Basic  directory structure")
+	cfg, err := config.ReadConfig()
+	if err != nil {
+		log.Fatal("Error reading configuration file")
+	}
+
+	fmt.Printf("%+v\n", cfg)
 }

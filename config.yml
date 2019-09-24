@@ -1,0 +1,40 @@
+hero:
+  health:
+    health_start: 70
+    health_end: 100
+  strength:
+    strength_start: 70
+    strength_end: 80
+  defence:
+    defence_start: 45
+    defence_end: 55
+  speed:
+    speed_start: 40
+    speed_end: 50
+  luck:
+    luck_start: 0.1
+    luck_end: 0.3
+  special:
+    critical_strike:
+      strike_twice_probability: 0.1
+      strike_third_given_twice_probability: 0.01
+    resilience:
+      half_damage_resilience_probability: 0.2
+
+      
+villain:
+  health:
+    health_start: 60
+    health_end: 90
+  strength:
+    strength_start: 60
+    strength_end: 90
+  defence:
+    defence_start: 40
+    defence_end: 60
+  speed:
+    speed_start: 40
+    speed_end: 60
+  luck:
+    luck_start: 0.25
+    luck_end: 0.4
