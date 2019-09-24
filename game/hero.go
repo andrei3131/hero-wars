@@ -25,5 +25,5 @@ func (h *Hero) SetLuck() PlayerBuilder {
 }
 
 func (h *Hero) Build() Player {
-
+	
 }
