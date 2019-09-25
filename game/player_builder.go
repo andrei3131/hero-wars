@@ -10,4 +10,3 @@ type PlayerBuilder interface {
 	SetSpecialResilience() PlayerBuilder
 	Build() (Player, Special)
 }
-

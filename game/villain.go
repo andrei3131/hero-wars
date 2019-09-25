@@ -1,23 +1,23 @@
 package game
 
 import (
-	"time"
 	"math/rand"
+	"time"
 
-	"github.com/hero-wars/utils"
 	"github.com/hero-wars/config"
+	"github.com/hero-wars/utils"
 )
 
 type Villain struct {
-	player Player
-	cfg *config.Config
+	player    Player
+	cfg       *config.Config
 	generator *rand.Rand
 }
 
 func NewVillain(cfg *config.Config) *Villain {
-	return &Villain {
-		cfg : cfg,
-		generator : rand.New(rand.NewSource(time.Now().UnixNano())),
+	return &Villain{
+		cfg:       cfg,
+		generator: rand.New(rand.NewSource(time.Now().UnixNano())),
 	}
 }
 
@@ -32,8 +32,8 @@ func (v *Villain) SetHealth() PlayerBuilder {
 
 func (v *Villain) SetStrength() PlayerBuilder {
 	intRange := utils.NewIntRange(v.cfg.Villain.Common.Strength.StrengthStart,
-								  v.cfg.Villain.Common.Strength.StrengthEnd,
-								  v.generator)
+		v.cfg.Villain.Common.Strength.StrengthEnd,
+		v.generator)
 	v.player.Strength = intRange.NextRandomInt()
 
 	return v

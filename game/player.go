@@ -9,7 +9,7 @@ import (
 
 type Special struct {
 	CriticalStrike struct {
-		StrikeTwiceProbability float32
+		StrikeTwiceProbability           float32
 		StrikeThirdGivenTwiceProbability float32
 	}
 	Resilience struct {
@@ -18,13 +18,12 @@ type Special struct {
 }
 
 type Player struct {
-	Health int
+	Health   int
 	Strength int
-	Defence int 
-	Speed int
-	Luck float32
+	Defence  int
+	Speed    int
+	Luck     float32
 }
-
 
 func (p *Player) IsAlive() bool {
 	return p.Health > 0
@@ -32,8 +31,8 @@ func (p *Player) IsAlive() bool {
 
 func (p Player) String() string {
 	t := table.NewWriter()
-    //t.SetOutputMirror(os.Stdout)
-    t.AppendHeader(table.Row{"Health", "Strength", "Defence", "Speed", "Luck"})
-    t.AppendRow([]interface{}{p.Health, p.Health, p.Defence, p.Speed, p.Luck})
-    return "\n\n" + t.Render() + "\n\n"
+	//t.SetOutputMirror(os.Stdout)
+	t.AppendHeader(table.Row{"Health", "Strength", "Defence", "Speed", "Luck"})
+	t.AppendRow([]interface{}{p.Health, p.Health, p.Defence, p.Speed, p.Luck})
+	return "\n\n" + t.Render() + "\n\n"
 }

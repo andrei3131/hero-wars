@@ -1,43 +1,43 @@
 package config
 
 import (
-	"os"
 	"errors"
-	"log"
 	"gopkg.in/yaml.v2"
+	"log"
+	"os"
 )
 
-var MAX_ROUNDS  = 20
+var MAX_ROUNDS = 20
 var CONFIG_FILE = "config.yml"
-var WAR_STORY   = "Hero walks the whimsical forests of the Terminal Valley and he encounters a nefarious villain."
+var WAR_STORY = "Hero walks the whimsical forests of the Terminal Valley and he encounters a nefarious villain."
 
 type Config struct {
 	Hero struct {
 		Common struct {
 			Health struct {
 				HealthStart int `yaml:"health_start"`
-				HealthEnd int `yaml:"health_end"`
+				HealthEnd   int `yaml:"health_end"`
 			} `yaml:"health"`
 			Strength struct {
 				StrengthStart int `yaml:"strength_start"`
-				StrengthEnd int `yaml:"strength_end"`
+				StrengthEnd   int `yaml:"strength_end"`
 			} `yaml:"strength"`
 			Defence struct {
 				DefenceStart int `yaml:"defence_start"`
-				DefenceEnd int `yaml:"defence_end"`
+				DefenceEnd   int `yaml:"defence_end"`
 			} `yaml:"defence"`
 			Speed struct {
 				SpeedStart int `yaml:"speed_start"`
-				SpeedEnd int `yaml:"speed_end"`
-			}`yaml:"speed"`
+				SpeedEnd   int `yaml:"speed_end"`
+			} `yaml:"speed"`
 			Luck struct {
 				LuckStart float32 `yaml:"luck_start"`
-				LuckEnd float32 `yaml:"luck_end"`
-			}`yaml:"luck"`
+				LuckEnd   float32 `yaml:"luck_end"`
+			} `yaml:"luck"`
 		} `yaml:"common"`
 		Special struct {
 			CriticalStrike struct {
-				StrikeTwiceProbability float32 `yaml:"strike_twice_probability"`
+				StrikeTwiceProbability           float32 `yaml:"strike_twice_probability"`
 				StrikeThirdGivenTwiceProbability float32 `yaml:"strike_third_given_twice_probability"`
 			} `yaml:"critical_strike"`
 			Resilience struct {
@@ -49,28 +49,27 @@ type Config struct {
 		Common struct {
 			Health struct {
 				HealthStart int `yaml:"health_start"`
-				HealthEnd int `yaml:"health_end"`
+				HealthEnd   int `yaml:"health_end"`
 			} `yaml:"health"`
 			Strength struct {
 				StrengthStart int `yaml:"strength_start"`
-				StrengthEnd int `yaml:"strength_end"`
+				StrengthEnd   int `yaml:"strength_end"`
 			} `yaml:"strength"`
 			Defence struct {
 				DefenceStart int `yaml:"defence_start"`
-				DefenceEnd int `yaml:"defence_end"`
+				DefenceEnd   int `yaml:"defence_end"`
 			} `yaml:"defence"`
 			Speed struct {
 				SpeedStart int `yaml:"speed_start"`
-				SpeedEnd int `yaml:"speed_end"`
-			}`yaml:"speed"`
+				SpeedEnd   int `yaml:"speed_end"`
+			} `yaml:"speed"`
 			Luck struct {
 				LuckStart float32 `yaml:"luck_start"`
-				LuckEnd float32 `yaml:"luck_end"`
-			}`yaml:"luck"`
+				LuckEnd   float32 `yaml:"luck_end"`
+			} `yaml:"luck"`
 		} `yaml:"common"`
-	} `yaml:"villain"`	
+	} `yaml:"villain"`
 }
-
 
 func ReadConfig() (*Config, error) {
 	f, err := os.Open(CONFIG_FILE)
@@ -90,13 +89,12 @@ func ReadConfig() (*Config, error) {
 	return config, nil
 }
 
-
 type GameOutcome int
 
 const (
-        HERO_WINS GameOutcome = iota
-        VILLAIN_WINS
-        DRAW
+	HERO_WINS GameOutcome = iota
+	VILLAIN_WINS
+	DRAW
 )
 
 func (o GameOutcome) String() string {

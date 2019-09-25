@@ -1,19 +1,18 @@
 package main
 
 import (
-	"log"
 	"fmt"
+	"log"
 	"time"
-	
-	"github.com/hero-wars/game"
+
 	"github.com/hero-wars/config"
+	"github.com/hero-wars/game"
 
 	"github.com/briandowns/spinner"
 )
 
-
-func buildHeroWarsCharacters(cfg *config.Config) (*game.Player,*game.Special,    // hero
-												  *game.Player, *game.Special) { // villain
+func buildHeroWarsCharacters(cfg *config.Config) (*game.Player, *game.Special, // hero
+	*game.Player, *game.Special) { // villain
 	buildManager := game.BuildManager{}
 
 	hero := game.NewHero(cfg)
@@ -22,7 +21,7 @@ func buildHeroWarsCharacters(cfg *config.Config) (*game.Player,*game.Special,   
 
 	villain := game.NewVillain(cfg)
 	buildManager.SetBuilder(villain)
-	villainPlayer, _villainSpecial := buildManager.Construct()	
+	villainPlayer, _villainSpecial := buildManager.Construct()
 
 	return &heroPlayer, &heroSpecial, &villainPlayer, &_villainSpecial
 }
@@ -30,11 +29,10 @@ func buildHeroWarsCharacters(cfg *config.Config) (*game.Player,*game.Special,   
 func story() {
 	log.Printf("%s\n", config.WAR_STORY)
 	s := spinner.New(spinner.CharSets[39], 100*time.Millisecond)
-	s.Start()                                 
+	s.Start()
 	time.Sleep(3 * time.Second)
 	s.Stop()
 }
-
 
 func gameLoop(battle *game.Battle) {
 	numRounds := 0
@@ -42,17 +40,17 @@ func gameLoop(battle *game.Battle) {
 		story()
 
 		battle.Duel()
-	
+
 		numRounds += 1
 		if numRounds == config.MAX_ROUNDS {
-		   log.Printf("[GAME OVER] The maximum number of rounds (%d) has been reached.\n", config.MAX_ROUNDS)
-		   outcome, winner := battle.GetWinner()
-		   if outcome == config.DRAW {
-		   	   log.Printf("[%s] %s\n%s", outcome, battle.HeroPlayer, battle.VillainPlayer)
-		   } else {
-			   log.Printf("[%s] %s\n", outcome, winner)
-		   }
-		   break
+			log.Printf("[GAME OVER] The maximum number of rounds (%d) has been reached.\n", config.MAX_ROUNDS)
+			outcome, winner := battle.GetWinner()
+			if outcome == config.DRAW {
+				log.Printf("[%s] %s\n%s", outcome, battle.HeroPlayer, battle.VillainPlayer)
+			} else {
+				log.Printf("[%s] %s\n", outcome, winner)
+			}
+			break
 		}
 
 		if !battle.HeroPlayer.IsAlive() {
@@ -66,8 +64,6 @@ func gameLoop(battle *game.Battle) {
 		}
 	}
 }
-
-
 
 func main() {
 	cfg, err := config.ReadConfig()
