@@ -29,28 +29,19 @@ func buildHeroWarsCharacters(cfg *config.Config) (*game.Player,*game.Special,   
 
 func story() {
 	log.Printf("%s\n", config.WAR_STORY)
-	s := spinner.New(spinner.CharSets[39], 100*time.Millisecond)  // Build our new spinner
-	s.Start()                                                    // Start the spinner
-	time.Sleep(3 * time.Second)                                  // Run for some time to simulate work
+	s := spinner.New(spinner.CharSets[39], 100*time.Millisecond)
+	s.Start()                                 
+	time.Sleep(3 * time.Second)
 	s.Stop()
 }
 
 
-
-func main() {
-	cfg, err := config.ReadConfig()
-	if err != nil {
-		log.Fatal("Error reading configuration file")
-	}
-
-	heroPlayer, heroSpecial, villainPlayer, _ := buildHeroWarsCharacters(cfg)
-
-	fmt.Printf("Hero Player: %s\nHero Special: %+v\n", heroPlayer, heroSpecial)
-	fmt.Printf("Villain Player: %s\n", villainPlayer)
-
+func gameLoop(heroPlayer *game.Player, heroSpecial *game.Special, villainPlayer *game.Player) {
 	numRounds := 0
 	for {
 		story()
+
+
 	
 		numRounds += 1
 		if numRounds == config.MAX_ROUNDS {
@@ -74,4 +65,20 @@ func main() {
 			break
 		}
 	}
+}
+
+
+
+func main() {
+	cfg, err := config.ReadConfig()
+	if err != nil {
+		log.Fatal("Error reading configuration file")
+	}
+
+	heroPlayer, heroSpecial, villainPlayer, _ := buildHeroWarsCharacters(cfg)
+
+	fmt.Printf("Hero Player: %s\nHero Special: %+v\n", heroPlayer, heroSpecial)
+	fmt.Printf("Villain Player: %s\n", villainPlayer)
+
+	gameLoop(heroPlayer, heroSpecial, villainPlayer)
 }
