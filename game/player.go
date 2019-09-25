@@ -33,6 +33,6 @@ func (p Player) String() string {
 	t := table.NewWriter()
 	//t.SetOutputMirror(os.Stdout)
 	t.AppendHeader(table.Row{"Health", "Strength", "Defence", "Speed", "Luck"})
-	t.AppendRow([]interface{}{p.Health, p.Health, p.Defence, p.Speed, p.Luck})
+	t.AppendRow([]interface{}{p.Health, p.Strength, p.Defence, p.Speed, p.Luck})
 	return "\n" + t.Render() + "\n"
 }

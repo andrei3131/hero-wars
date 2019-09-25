@@ -6,20 +6,12 @@ import (
 	"github.com/hero-wars/config"
 )
 
-type TurnManager struct {
-	firstTurnPlayed bool
-	AttackerPlayer     *Player
-	AttackerSpecial    *Special
-	DefenderPlayer  *Player
-	DefenderSpecial *Special
-}
-
 type Battle struct {
 	HeroPlayer     *Player
 	HeroSpecial    *Special
 	VillainPlayer  *Player
 	VillainSpecial *Special
-	TurnManager TurnManager
+	TurnManager *BattleTurnManager
 }
 
 func NewBattle(heroPlayer *Player, heroSpecial *Special, villainPlayer *Player) *Battle {
@@ -28,8 +20,9 @@ func NewBattle(heroPlayer *Player, heroSpecial *Special, villainPlayer *Player) 
 		HeroSpecial:   heroSpecial,
 		VillainPlayer: villainPlayer,
 		VillainSpecial: nil,
-		TurnManager : &TurnManager{
-			firstTurnPlayed : false,
+		TurnManager : &BattleTurnManager{
+			FirstTurnPlayed : false,
+			ResiliencePreviouslyUsed : false,
 			AttackerPlayer : nil,
 			AttackerSpecial: nil,
 			DefenderPlayer: nil,
@@ -54,7 +47,7 @@ func (b *Battle) InitSetVillainAttacker() {
 
 
 func (b *Battle) Duel() {
-	if !b.TurnManager.firstTurnPlayed {
+	if !b.TurnManager.FirstTurnPlayed {
 	    if b.HeroPlayer.Speed > b.VillainPlayer.Speed {
 			log.Printf("%s\n", "Hero has higher speed, so he attacks first")
 			b.InitSetHeroAttacker()
@@ -76,9 +69,11 @@ func (b *Battle) Duel() {
 			}	
 		}
 
-	   b.TurnManager.firstTurnPlayed = true;
+	   b.TurnManager.FirstTurnPlayed = true;
 	}
 
+	b.TurnManager.Attack()
+	b.TurnManager.SwitchRoles()
 	b.TurnManager.Attack()
 	b.TurnManager.SwitchRoles()
 

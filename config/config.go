@@ -11,6 +11,8 @@ var MAX_ROUNDS = 20
 var CONFIG_FILE = "config.yml"
 var WAR_STORY = "Hero walks the whimsical forests of the Terminal Valley and he encounters a nefarious villain."
 
+var HERO_RESILIENCE_NUM_TURNS = 2
+
 type Config struct {
 	Hero struct {
 		Common struct {
