@@ -1,29 +1,81 @@
 package game
 
+import (
+	"time"
+	"math/rand"
+
+	"github.com/hero-wars/utils"
+	"github.com/hero-wars/config"
+)
+
 type Villain struct {
 	player Player
+	cfg *config.Config
+	generator *rand.Rand
 }
 
-func (h *Villain) SetHealth() PlayerBuilder {
-
+func NewVillain(cfg *config.Config) *Villain {
+	return &Villain {
+		cfg : cfg,
+		generator : rand.New(rand.NewSource(time.Now().UnixNano())),
+	}
 }
 
-func (h *Villain) SetStrength() PlayerBuilder {
+func (v *Villain) SetHealth() PlayerBuilder {
+	intRange := utils.NewIntRange(v.cfg.Villain.Common.Health.HealthStart,
+		v.cfg.Villain.Common.Health.HealthEnd,
+		v.generator)
+	v.player.Health = intRange.NextRandomInt()
 
+	return v
 }
 
-func (h *Villain) SetDefence() PlayerBuilder {
+func (v *Villain) SetStrength() PlayerBuilder {
+	intRange := utils.NewIntRange(v.cfg.Villain.Common.Strength.StrengthStart,
+								  v.cfg.Villain.Common.Strength.StrengthEnd,
+								  v.generator)
+	v.player.Strength = intRange.NextRandomInt()
 
+	return v
 }
 
-func (h *Villain) SetSpeed() PlayerBuilder {
+func (v *Villain) SetDefence() PlayerBuilder {
+	intRange := utils.NewIntRange(v.cfg.Villain.Common.Defence.DefenceStart,
+		v.cfg.Villain.Common.Defence.DefenceEnd,
+		v.generator)
+	v.player.Defence = intRange.NextRandomInt()
 
+	return v
 }
 
-func (h *Villain) SetLuck() PlayerBuilder {
+func (v *Villain) SetSpeed() PlayerBuilder {
+	intRange := utils.NewIntRange(v.cfg.Villain.Common.Speed.SpeedStart,
+		v.cfg.Villain.Common.Speed.SpeedEnd,
+		v.generator)
+	v.player.Speed = intRange.NextRandomInt()
 
+	return v
 }
 
-func (h *Villain) Build() Player {
-	return h.Player
+func (v *Villain) SetLuck() PlayerBuilder {
+	intRange := utils.NewFloat32Range(v.cfg.Villain.Common.Luck.LuckStart,
+		v.cfg.Villain.Common.Luck.LuckEnd,
+		v.generator)
+	v.player.Luck = intRange.NextRandomFloat32()
+
+	return v
+}
+
+func (v *Villain) SetSpecialCriticalStrike() PlayerBuilder {
+	// Villain has no special powers
+	return v
+}
+
+func (v *Villain) SetSpecialResilience() PlayerBuilder {
+	// Villain has no special powers
+	return v
+}
+
+func (v *Villain) Build() (Player, Special) {
+	return v.player, Special{}
 }

@@ -15,17 +15,18 @@ func main() {
 		log.Fatal("Error reading configuration file")
 	}
 
-	fmt.Printf("%+v\n", cfg)
 
-	playerBuilder := game.PlayerBuilder{}
+	buildManager := game.BuildManager{}
 
-	hero := &game.Hero{}
-	playerBuilder.SetBuilder(hero)
-	playerBuilder.Construct(cfg.Hero)
-	playerBuilder.PrintPlayer()
+	hero := game.NewHero(cfg)
+	buildManager.SetBuilder(hero)
+	heroPlayer, heroSpecial := buildManager.Construct()
 
-	villain := &game.Villain{}
-	playerBuilder.SetBuilder(villain)
-	playerBuilder.Construct(cfg.Villain)
-	playerBuilder.PrintPlayer()
+	villain := game.NewVillain(cfg)
+	buildManager.SetBuilder(villain)
+	villainPlayer, _ := buildManager.Construct()
+
+	fmt.Printf("Hero Player: %+v\nHero Special: %+v\n", heroPlayer, heroSpecial)
+	fmt.Printf("Villain Player: %+v\n", villainPlayer)
+
 }
