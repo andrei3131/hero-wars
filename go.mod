@@ -2,8 +2,6 @@ module github.com/hero-wars
 
 require github.com/hero-wars/config v0.0.0
 
-replace github.com/hero-wars/config v0.0.0 => ./config
-
 
 require github.com/briandowns/spinner v1.7.0
 require github.com/briandowns/spinner v1.7.0
