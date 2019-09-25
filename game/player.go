@@ -1,10 +1,9 @@
 package game
 
 import (
-	"os"
+	//"os"
 	// "fmt"
 
-	"github.com/hero-wars/config"
 	"github.com/jedib0t/go-pretty/table"
 )
 
@@ -26,18 +25,6 @@ type Player struct {
 	Luck float32
 }
 
-func GetWinner(heroPlayer *Player, villainPlayer *Player) (config.GameOutcome, *Player) {
-	if heroPlayer.Health > villainPlayer.Health {
-		return config.HERO_WINS, heroPlayer
-	}
-
-	if heroPlayer.Health == villainPlayer.Health {
-		return config.DRAW, nil
-	}
-
-	return config.VILLAIN_WINS, villainPlayer
-}  
-
 
 func (p *Player) IsAlive() bool {
 	return p.Health > 0
@@ -45,7 +32,7 @@ func (p *Player) IsAlive() bool {
 
 func (p Player) String() string {
 	t := table.NewWriter()
-    t.SetOutputMirror(os.Stdout)
+    //t.SetOutputMirror(os.Stdout)
     t.AppendHeader(table.Row{"Health", "Strength", "Defence", "Speed", "Luck"})
     t.AppendRow([]interface{}{p.Health, p.Health, p.Defence, p.Speed, p.Luck})
     return "\n\n" + t.Render() + "\n\n"
