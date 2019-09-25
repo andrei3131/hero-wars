@@ -7,7 +7,9 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+var MAX_ROUNDS  = 20
 var CONFIG_FILE = "config.yml"
+var WAR_STORY   = "Hero walks the whimsical forests of the Terminal Valley and he encounters a nefarious villain."
 
 type Config struct {
 	Hero struct {
@@ -86,4 +88,17 @@ func ReadConfig() (*Config, error) {
 	}
 
 	return config, nil
+}
+
+
+type GameOutcome int
+
+const (
+        HERO_WINS GameOutcome = iota
+        VILLAIN_WINS
+        DRAW
+)
+
+func (o GameOutcome) String() string {
+	return [...]string{"HERO WINS", "VILLAIN WINS", "DRAW"}[o]
 }
