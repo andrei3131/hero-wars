@@ -76,8 +76,8 @@ type Config struct {
 	} `yaml:"villain"`
 }
 
-func ReadConfig() (*Config, error) {
-	f, err := os.Open(CONFIG_FILE)
+func ReadConfig(configFile string) (*Config, error) {
+	f, err := os.Open(configFile)
 	if err != nil {
 		log.Fatalf("Could not open config file %s\n", CONFIG_FILE)
 		return nil, errors.New("Could not open config file")

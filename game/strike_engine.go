@@ -1,12 +1,14 @@
 package game
 
+//go:generate mockgen -destination=../mocks/mock_strike_engine.go -package=mocks github.com/andrei3131/hero-wars/game StrikeEngineInterface
+
 import (
 	"log"
 	"math/rand"
 
-	"github.com/hero-wars/config"
-	"github.com/hero-wars/player"
-	"github.com/hero-wars/utils"
+	"github.com/andrei3131/hero-wars/config"
+	"github.com/andrei3131/hero-wars/player"
+	"github.com/andrei3131/hero-wars/utils"
 )
 
 type StrikeEngineInterface interface {

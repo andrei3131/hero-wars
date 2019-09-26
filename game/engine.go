@@ -4,8 +4,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/hero-wars/config"
-	"github.com/hero-wars/player"
+	"github.com/andrei3131/hero-wars/config"
+	"github.com/andrei3131/hero-wars/player"
 )
 
 type Engine struct {

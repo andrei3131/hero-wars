@@ -4,8 +4,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/hero-wars/config"
-	"github.com/hero-wars/utils"
+	"github.com/andrei3131/hero-wars/config"
+	"github.com/andrei3131/hero-wars/utils"
 )
 
 type Villain struct {

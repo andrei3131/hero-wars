@@ -5,9 +5,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/hero-wars/config"
-	"github.com/hero-wars/game"
-	"github.com/hero-wars/player"
+	"github.com/andrei3131/hero-wars/config"
+	"github.com/andrei3131/hero-wars/game"
+	"github.com/andrei3131/hero-wars/player"
 
 	"github.com/briandowns/spinner"
 )
@@ -67,7 +67,7 @@ func gameLoop(battle *game.Battle) {
 }
 
 func main() {
-	cfg, err := config.ReadConfig()
+	cfg, err := config.ReadConfig(config.CONFIG_FILE)
 	if err != nil {
 		log.Fatal("Error reading configuration file")
 	}
