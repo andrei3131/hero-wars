@@ -8,6 +8,14 @@ import (
 	"github.com/andrei3131/hero-wars/player"
 )
 
+
+type EngineInterface interface {
+	Attack()
+	SwitchRoles()
+	IsFirstTurnPlayed() bool
+	SetFirstTurnPlayed()
+}
+
 type Engine struct {
 	AttackerPlayer  *player.Player
 	AttackerSpecial *player.Special

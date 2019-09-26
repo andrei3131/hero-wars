@@ -7,6 +7,13 @@ import (
 	"github.com/andrei3131/hero-wars/player"
 )
 
+type BattleInterface interface {
+	GetWinner() (config.GameOutcome, *player.Player)
+	InitSetHeroAttacker()
+	InitSetVillainAttacker()
+	Duel()
+}
+
 type Battle struct {
 	HeroPlayer     *player.Player
 	HeroSpecial    *player.Special
