@@ -4,14 +4,14 @@ import (
 	//"log"
 	"fmt"
 
+	gomock "github.com/golang/mock/gomock"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	gomock "github.com/golang/mock/gomock"
 
-	"github.com/andrei3131/hero-wars/mocks"
 	"github.com/andrei3131/hero-wars/config"
-	"github.com/andrei3131/hero-wars/player"
 	"github.com/andrei3131/hero-wars/gamelib"
+	"github.com/andrei3131/hero-wars/mocks"
+	"github.com/andrei3131/hero-wars/player"
 )
 
 var _ = Describe("PlayerBuilder", func() {
@@ -71,12 +71,11 @@ var _ = Describe("PlayerBuilder", func() {
 
 })
 
-
 var _ = Describe("Player Builder Range Correctness", func() {
 	cfg, _ := config.ReadConfig("../" + config.CONFIG_FILE)
 
-	heroBuilder 	 := player.NewHero(cfg)
-	villainBuilder   := player.NewVillain(cfg)
+	heroBuilder := player.NewHero(cfg)
+	villainBuilder := player.NewVillain(cfg)
 
 	for i := 1; i < 10000; i++ {
 		heroPlayer, _, villainPlayer, _ := gamelib.BuildHeroWarsCharacters(heroBuilder, villainBuilder)
@@ -85,19 +84,19 @@ var _ = Describe("Player Builder Range Correctness", func() {
 			It("expects to generate a hero attribute within the configured range", func() {
 				gamelib.BuildHeroWarsCharacters(heroBuilder, villainBuilder)
 				Ω(heroPlayer.Health).Should(BeNumerically(">=", cfg.Hero.Common.Health.HealthStart))
-				Ω(heroPlayer.Health).Should(BeNumerically("<=", cfg.Hero.Common.Health.HealthEnd))	
+				Ω(heroPlayer.Health).Should(BeNumerically("<=", cfg.Hero.Common.Health.HealthEnd))
 
 				Ω(heroPlayer.Strength).Should(BeNumerically(">=", cfg.Hero.Common.Strength.StrengthStart))
-				Ω(heroPlayer.Strength).Should(BeNumerically("<=", cfg.Hero.Common.Strength.StrengthEnd))	
+				Ω(heroPlayer.Strength).Should(BeNumerically("<=", cfg.Hero.Common.Strength.StrengthEnd))
 
 				Ω(heroPlayer.Defence).Should(BeNumerically(">=", cfg.Hero.Common.Defence.DefenceStart))
-				Ω(heroPlayer.Defence).Should(BeNumerically("<=", cfg.Hero.Common.Defence.DefenceEnd))	
+				Ω(heroPlayer.Defence).Should(BeNumerically("<=", cfg.Hero.Common.Defence.DefenceEnd))
 
 				Ω(heroPlayer.Speed).Should(BeNumerically(">=", cfg.Hero.Common.Speed.SpeedStart))
-				Ω(heroPlayer.Speed).Should(BeNumerically("<=", cfg.Hero.Common.Speed.SpeedEnd))	
+				Ω(heroPlayer.Speed).Should(BeNumerically("<=", cfg.Hero.Common.Speed.SpeedEnd))
 
 				Ω(heroPlayer.Luck).Should(BeNumerically(">=", cfg.Hero.Common.Luck.LuckStart))
-				Ω(heroPlayer.Luck).Should(BeNumerically("<=", cfg.Hero.Common.Luck.LuckEnd))	
+				Ω(heroPlayer.Luck).Should(BeNumerically("<=", cfg.Hero.Common.Luck.LuckEnd))
 			})
 		})
 
@@ -105,19 +104,19 @@ var _ = Describe("Player Builder Range Correctness", func() {
 			It("expects to generate a hero attribute within the configured range", func() {
 				gamelib.BuildHeroWarsCharacters(heroBuilder, villainBuilder)
 				Ω(villainPlayer.Health).Should(BeNumerically(">=", cfg.Villain.Common.Health.HealthStart))
-				Ω(villainPlayer.Health).Should(BeNumerically("<=", cfg.Villain.Common.Health.HealthEnd))	
+				Ω(villainPlayer.Health).Should(BeNumerically("<=", cfg.Villain.Common.Health.HealthEnd))
 
 				Ω(villainPlayer.Strength).Should(BeNumerically(">=", cfg.Villain.Common.Strength.StrengthStart))
-				Ω(villainPlayer.Strength).Should(BeNumerically("<=", cfg.Villain.Common.Strength.StrengthEnd))	
+				Ω(villainPlayer.Strength).Should(BeNumerically("<=", cfg.Villain.Common.Strength.StrengthEnd))
 
 				Ω(villainPlayer.Defence).Should(BeNumerically(">=", cfg.Villain.Common.Defence.DefenceStart))
-				Ω(villainPlayer.Defence).Should(BeNumerically("<=", cfg.Villain.Common.Defence.DefenceEnd))	
+				Ω(villainPlayer.Defence).Should(BeNumerically("<=", cfg.Villain.Common.Defence.DefenceEnd))
 
 				Ω(villainPlayer.Speed).Should(BeNumerically(">=", cfg.Villain.Common.Speed.SpeedStart))
-				Ω(villainPlayer.Speed).Should(BeNumerically("<=", cfg.Villain.Common.Speed.SpeedEnd))	
+				Ω(villainPlayer.Speed).Should(BeNumerically("<=", cfg.Villain.Common.Speed.SpeedEnd))
 
 				Ω(villainPlayer.Luck).Should(BeNumerically(">=", cfg.Villain.Common.Luck.LuckStart))
-				Ω(villainPlayer.Luck).Should(BeNumerically("<=", cfg.Villain.Common.Luck.LuckEnd))	
+				Ω(villainPlayer.Luck).Should(BeNumerically("<=", cfg.Villain.Common.Luck.LuckEnd))
 			})
 		})
 	}

@@ -4,12 +4,10 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/andrei3131/hero-wars/gamelib"
 	"github.com/andrei3131/hero-wars/config"
 	"github.com/andrei3131/hero-wars/game"
+	"github.com/andrei3131/hero-wars/gamelib"
 	"github.com/andrei3131/hero-wars/player"
-
-
 )
 
 func main() {
@@ -18,8 +16,8 @@ func main() {
 		log.Fatal("Error reading configuration file")
 	}
 
-	heroBuilder 	 := player.NewHero(cfg)
-	villainBuilder   := player.NewVillain(cfg)
+	heroBuilder := player.NewHero(cfg)
+	villainBuilder := player.NewVillain(cfg)
 
 	heroPlayer, heroSpecial, villainPlayer, _ := gamelib.BuildHeroWarsCharacters(heroBuilder, villainBuilder)
 

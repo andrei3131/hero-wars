@@ -11,9 +11,8 @@ import (
 	"github.com/briandowns/spinner"
 )
 
-
 func BuildHeroWarsCharacters(hero player.PlayerBuilder,
-							 villain player.PlayerBuilder) (*player.Player, *player.Special, // hero
+	villain player.PlayerBuilder) (*player.Player, *player.Special, // hero
 	*player.Player, *player.Special) { // villain
 	buildManager := player.BuildManager{}
 
@@ -28,7 +27,7 @@ func BuildHeroWarsCharacters(hero player.PlayerBuilder,
 
 func story() {
 	log.Printf("%s\n", config.WAR_STORY)
-	s := spinner.New(spinner.CharSets[39], 100 * time.Millisecond)
+	s := spinner.New(spinner.CharSets[39], 100*time.Millisecond)
 	s.Start()
 	time.Sleep(3 * time.Second)
 	s.Stop()
