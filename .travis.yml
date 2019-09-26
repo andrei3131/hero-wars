@@ -15,6 +15,6 @@ notifications:
 go_import_path: github.com/pkg/hero-wars
 
 script: 
-  - echo "Running the script"
+  - echo "Running build and test for Hero Wars"
   - make build
   - make test
