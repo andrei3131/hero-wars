@@ -51,9 +51,8 @@ func (mr *MockPlayerBuilderMockRecorder) Build() *gomock.Call {
 // SetDefence mocks base method
 func (m *MockPlayerBuilder) SetDefence() player.PlayerBuilder {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetDefence")
-	ret0, _ := ret[0].(player.PlayerBuilder)
-	return ret0
+	m.ctrl.Call(m, "SetDefence")
+	return m
 }
 
 // SetDefence indicates an expected call of SetDefence
@@ -65,9 +64,8 @@ func (mr *MockPlayerBuilderMockRecorder) SetDefence() *gomock.Call {
 // SetHealth mocks base method
 func (m *MockPlayerBuilder) SetHealth() player.PlayerBuilder {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetHealth")
-	ret0, _ := ret[0].(player.PlayerBuilder)
-	return ret0
+	m.ctrl.Call(m, "SetHealth")
+	return m
 }
 
 // SetHealth indicates an expected call of SetHealth
@@ -79,9 +77,8 @@ func (mr *MockPlayerBuilderMockRecorder) SetHealth() *gomock.Call {
 // SetLuck mocks base method
 func (m *MockPlayerBuilder) SetLuck() player.PlayerBuilder {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetLuck")
-	ret0, _ := ret[0].(player.PlayerBuilder)
-	return ret0
+	m.ctrl.Call(m, "SetLuck")
+	return m
 }
 
 // SetLuck indicates an expected call of SetLuck
@@ -93,9 +90,8 @@ func (mr *MockPlayerBuilderMockRecorder) SetLuck() *gomock.Call {
 // SetSpecialCriticalStrike mocks base method
 func (m *MockPlayerBuilder) SetSpecialCriticalStrike() player.PlayerBuilder {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetSpecialCriticalStrike")
-	ret0, _ := ret[0].(player.PlayerBuilder)
-	return ret0
+	m.ctrl.Call(m, "SetSpecialCriticalStrike")
+	return m
 }
 
 // SetSpecialCriticalStrike indicates an expected call of SetSpecialCriticalStrike
@@ -107,9 +103,8 @@ func (mr *MockPlayerBuilderMockRecorder) SetSpecialCriticalStrike() *gomock.Call
 // SetSpecialResilience mocks base method
 func (m *MockPlayerBuilder) SetSpecialResilience() player.PlayerBuilder {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetSpecialResilience")
-	ret0, _ := ret[0].(player.PlayerBuilder)
-	return ret0
+	m.ctrl.Call(m, "SetSpecialResilience")
+	return m
 }
 
 // SetSpecialResilience indicates an expected call of SetSpecialResilience
@@ -121,9 +116,8 @@ func (mr *MockPlayerBuilderMockRecorder) SetSpecialResilience() *gomock.Call {
 // SetSpeed mocks base method
 func (m *MockPlayerBuilder) SetSpeed() player.PlayerBuilder {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetSpeed")
-	ret0, _ := ret[0].(player.PlayerBuilder)
-	return ret0
+	m.ctrl.Call(m, "SetSpeed")
+	return m
 }
 
 // SetSpeed indicates an expected call of SetSpeed
@@ -135,9 +129,8 @@ func (mr *MockPlayerBuilderMockRecorder) SetSpeed() *gomock.Call {
 // SetStrength mocks base method
 func (m *MockPlayerBuilder) SetStrength() player.PlayerBuilder {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetStrength")
-	ret0, _ := ret[0].(player.PlayerBuilder)
-	return ret0
+	m.ctrl.Call(m, "SetStrength")
+	return m
 }
 
 // SetStrength indicates an expected call of SetStrength
