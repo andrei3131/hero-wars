@@ -7,19 +7,21 @@ import (
 
 	"github.com/hero-wars/config"
 	"github.com/hero-wars/game"
+	"github.com/hero-wars/player"
+	
 
 	"github.com/briandowns/spinner"
 )
 
-func buildHeroWarsCharacters(cfg *config.Config) (*game.Player, *game.Special, // hero
-	*game.Player, *game.Special) { // villain
-	buildManager := game.BuildManager{}
+func buildHeroWarsCharacters(cfg *config.Config) (*player.Player, *player.Special, // hero
+	*player.Player, *player.Special) { // villain
+	buildManager := player.BuildManager{}
 
-	hero := game.NewHero(cfg)
+	hero := player.NewHero(cfg)
 	buildManager.SetBuilder(hero)
 	heroPlayer, heroSpecial := buildManager.Construct()
 
-	villain := game.NewVillain(cfg)
+	villain := player.NewVillain(cfg)
 	buildManager.SetBuilder(villain)
 	villainPlayer, _villainSpecial := buildManager.Construct()
 
@@ -73,7 +75,7 @@ func main() {
 
 	heroPlayer, heroSpecial, villainPlayer, _ := buildHeroWarsCharacters(cfg)
 
-	fmt.Printf("Hero Player: %s\nHero Special: %+v\n", heroPlayer, heroSpecial)
+	fmt.Printf("Hero Player: %s\nHero Special: %s\n", heroPlayer, heroSpecial)
 	fmt.Printf("Villain Player: %s\n", villainPlayer)
 
 	battle := game.NewBattle(heroPlayer, heroSpecial, villainPlayer)

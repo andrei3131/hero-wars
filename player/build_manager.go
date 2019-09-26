@@ -1,4 +1,4 @@
-package game
+package player
 
 type BuildManager struct {
 	playerBuilder PlayerBuilder

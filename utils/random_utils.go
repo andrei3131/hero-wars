@@ -22,13 +22,13 @@ func (ir *IntRange) NextRandomInt() int {
 	return ir.generator.Intn(ir.max-ir.min+1) + ir.min
 }
 
-// Uniform float32 generator from range
+// Uniform float64 generator from range
 type FloatRange struct {
-	min, max  float32
+	min, max  float64
 	generator *rand.Rand
 }
 
-func NewFloat32Range(min, max float32, generator *rand.Rand) *FloatRange {
+func NewFloat64Range(min, max float64, generator *rand.Rand) *FloatRange {
 	return &FloatRange{
 		min:       min,
 		max:       max,
@@ -36,6 +36,6 @@ func NewFloat32Range(min, max float32, generator *rand.Rand) *FloatRange {
 	}
 }
 
-func (ir *FloatRange) NextRandomFloat32() float32 {
-	return ir.min + ir.generator.Float32()*(ir.max-ir.min)
+func (ir *FloatRange) NextRandomFloat64() float64 {
+	return ir.min + ir.generator.Float64()*(ir.max-ir.min)
 }

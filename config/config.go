@@ -4,12 +4,15 @@ import (
 	"errors"
 	"gopkg.in/yaml.v2"
 	"log"
+	"fmt"
 	"os"
 )
 
 var MAX_ROUNDS = 20
-var CONFIG_FILE = "config.yml"
-var WAR_STORY = "Hero walks the whimsical forests of the Terminal Valley and he encounters a nefarious villain."
+var CONFIG_FILE  = "config.yml"
+var HERO_NAME    = "Hero"
+var VILLAIN_NAME = "Villain"
+var WAR_STORY = fmt.Sprintf("%s walks the whimsical forests of the Terminal Valley and he encounters a nefarious %s.\n", HERO_NAME, VILLAIN_NAME)
 
 var HERO_RESILIENCE_NUM_TURNS = 2
 
@@ -33,17 +36,17 @@ type Config struct {
 				SpeedEnd   int `yaml:"speed_end"`
 			} `yaml:"speed"`
 			Luck struct {
-				LuckStart float32 `yaml:"luck_start"`
-				LuckEnd   float32 `yaml:"luck_end"`
+				LuckStart float64 `yaml:"luck_start"`
+				LuckEnd   float64 `yaml:"luck_end"`
 			} `yaml:"luck"`
 		} `yaml:"common"`
 		Special struct {
 			CriticalStrike struct {
-				StrikeTwiceProbability           float32 `yaml:"strike_twice_probability"`
-				StrikeThirdGivenTwiceProbability float32 `yaml:"strike_third_given_twice_probability"`
+				StrikeTwiceProbability           float64 `yaml:"strike_twice_probability"`
+				StrikeThirdGivenTwiceProbability float64 `yaml:"strike_third_given_twice_probability"`
 			} `yaml:"critical_strike"`
 			Resilience struct {
-				HalfDamageResilienceProbability float32 `yaml:"half_damage_resilience_probability"`
+				HalfDamageResilienceProbability float64 `yaml:"half_damage_resilience_probability"`
 			} `yaml:"resilience"`
 		} `yaml:"special"`
 	} `yaml:"hero"`
@@ -66,8 +69,8 @@ type Config struct {
 				SpeedEnd   int `yaml:"speed_end"`
 			} `yaml:"speed"`
 			Luck struct {
-				LuckStart float32 `yaml:"luck_start"`
-				LuckEnd   float32 `yaml:"luck_end"`
+				LuckStart float64 `yaml:"luck_start"`
+				LuckEnd   float64 `yaml:"luck_end"`
 			} `yaml:"luck"`
 		} `yaml:"common"`
 	} `yaml:"villain"`

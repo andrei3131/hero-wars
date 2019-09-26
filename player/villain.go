@@ -1,4 +1,4 @@
-package game
+package player
 
 import (
 	"math/rand"
@@ -58,10 +58,10 @@ func (v *Villain) SetSpeed() PlayerBuilder {
 }
 
 func (v *Villain) SetLuck() PlayerBuilder {
-	intRange := utils.NewFloat32Range(v.cfg.Villain.Common.Luck.LuckStart,
+	intRange := utils.NewFloat64Range(v.cfg.Villain.Common.Luck.LuckStart,
 		v.cfg.Villain.Common.Luck.LuckEnd,
 		v.generator)
-	v.player.Luck = intRange.NextRandomFloat32()
+	v.player.Luck = intRange.NextRandomFloat64()
 
 	return v
 }

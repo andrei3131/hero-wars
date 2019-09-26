@@ -4,60 +4,60 @@ import (
 	"log"
 
 	"github.com/hero-wars/config"
+	"github.com/hero-wars/player"
 )
 
 type Battle struct {
-	HeroPlayer     *Player
-	HeroSpecial    *Special
-	VillainPlayer  *Player
-	VillainSpecial *Special
-	TurnManager *BattleTurnManager
+	HeroPlayer     *player.Player
+	HeroSpecial    *player.Special
+	VillainPlayer  *player.Player
+	VillainSpecial *player.Special
+	Engine         *Engine
 }
 
-func NewBattle(heroPlayer *Player, heroSpecial *Special, villainPlayer *Player) *Battle {
+func NewBattle(heroPlayer *player.Player, heroSpecial *player.Special, villainPlayer *player.Player) *Battle {
 	return &Battle{
-		HeroPlayer:    heroPlayer,
-		HeroSpecial:   heroSpecial,
-		VillainPlayer: villainPlayer,
+		HeroPlayer:     heroPlayer,
+		HeroSpecial:    heroSpecial,
+		VillainPlayer:  villainPlayer,
 		VillainSpecial: nil,
-		TurnManager : &BattleTurnManager{
-			FirstTurnPlayed : false,
-			ResiliencePreviouslyUsed : false,
-			AttackerPlayer : nil,
-			AttackerSpecial: nil,
-			DefenderPlayer: nil,
-			DefenderSpecial: nil,
+		Engine: &Engine{
+			FirstTurnPlayed:          false,
+			ResiliencePreviouslyUsed: false,
+			AttackerPlayer:           nil,
+			AttackerSpecial:          nil,
+			DefenderPlayer:           nil,
+			DefenderSpecial:          nil,
 		},
 	}
 }
 
 func (b *Battle) InitSetHeroAttacker() {
-	b.TurnManager.AttackerPlayer  = b.HeroPlayer
-	b.TurnManager.AttackerSpecial = b.HeroSpecial
-	b.TurnManager.DefenderPlayer  = b.VillainPlayer
-	b.TurnManager.DefenderSpecial = b.VillainSpecial
+	b.Engine.AttackerPlayer = b.HeroPlayer
+	b.Engine.AttackerSpecial = b.HeroSpecial
+	b.Engine.DefenderPlayer = b.VillainPlayer
+	b.Engine.DefenderSpecial = b.VillainSpecial
 }
 
 func (b *Battle) InitSetVillainAttacker() {
-	b.TurnManager.AttackerPlayer  = b.VillainPlayer 
-	b.TurnManager.AttackerSpecial = b.VillainSpecial
-	b.TurnManager.DefenderPlayer  = b.HeroPlayer
-	b.TurnManager.DefenderSpecial = b.HeroSpecial
+	b.Engine.AttackerPlayer = b.VillainPlayer
+	b.Engine.AttackerSpecial = b.VillainSpecial
+	b.Engine.DefenderPlayer = b.HeroPlayer
+	b.Engine.DefenderSpecial = b.HeroSpecial
 }
 
-
 func (b *Battle) Duel() {
-	if !b.TurnManager.FirstTurnPlayed {
-	    if b.HeroPlayer.Speed > b.VillainPlayer.Speed {
+	if !b.Engine.FirstTurnPlayed {
+		if b.HeroPlayer.Speed > b.VillainPlayer.Speed {
 			log.Printf("%s\n", "Hero has higher speed, so he attacks first")
 			b.InitSetHeroAttacker()
-	    }
-	   
-	    if b.HeroPlayer.Speed < b.VillainPlayer.Speed {
+		}
+
+		if b.HeroPlayer.Speed < b.VillainPlayer.Speed {
 			log.Printf("%s\n", "Villain has higher speed, so he attacks first")
 			b.InitSetVillainAttacker()
 		}
-		 
+
 		if b.VillainPlayer.Speed == b.HeroPlayer.Speed {
 			log.Printf("%s\n", "Hero and Villain have the same speed, so the luckiest of them attacks first")
 			if b.HeroPlayer.Luck > b.VillainPlayer.Luck {
@@ -66,20 +66,20 @@ func (b *Battle) Duel() {
 			} else {
 				log.Printf("%s\n", "Villain has higher luck, so he attacks first")
 				b.InitSetVillainAttacker()
-			}	
+			}
 		}
 
-	   b.TurnManager.FirstTurnPlayed = true;
+		b.Engine.FirstTurnPlayed = true
 	}
 
-	b.TurnManager.Attack()
-	b.TurnManager.SwitchRoles()
-	b.TurnManager.Attack()
-	b.TurnManager.SwitchRoles()
+	b.Engine.Attack()
+	b.Engine.SwitchRoles()
+	b.Engine.Attack()
+	b.Engine.SwitchRoles()
 
 }
 
-func (b *Battle) GetWinner() (config.GameOutcome, *Player) {
+func (b *Battle) GetWinner() (config.GameOutcome, *player.Player) {
 	if b.HeroPlayer.Health > b.VillainPlayer.Health {
 		return config.HERO_WINS, b.HeroPlayer
 	}
