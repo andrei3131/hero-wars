@@ -17,3 +17,4 @@ go_import_path: github.com/pkg/hero-wars
 script: 
   - echo "Running the script"
   - make build
+  - make test
