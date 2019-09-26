@@ -15,19 +15,19 @@ type Battle struct {
 	Engine         *Engine
 }
 
-func NewBattle(heroPlayer *player.Player, heroSpecial *player.Special, villainPlayer *player.Player) *Battle {
+func NewBattle(heroPlayer *player.Player, heroSpecial *player.Special,
+	villainPlayer *player.Player, strikeEngine StrikeEngineInterface) *Battle {
 	return &Battle{
 		HeroPlayer:     heroPlayer,
 		HeroSpecial:    heroSpecial,
 		VillainPlayer:  villainPlayer,
 		VillainSpecial: nil,
 		Engine: &Engine{
-			FirstTurnPlayed:          false,
-			ResiliencePreviouslyUsed: false,
-			AttackerPlayer:           nil,
-			AttackerSpecial:          nil,
-			DefenderPlayer:           nil,
-			DefenderSpecial:          nil,
+			AttackerPlayer:  nil,
+			AttackerSpecial: nil,
+			DefenderPlayer:  nil,
+			DefenderSpecial: nil,
+			StrikeEngine:    strikeEngine,
 		},
 	}
 }
@@ -47,7 +47,7 @@ func (b *Battle) InitSetVillainAttacker() {
 }
 
 func (b *Battle) Duel() {
-	if !b.Engine.FirstTurnPlayed {
+	if !b.Engine.IsFirstTurnPlayed() {
 		if b.HeroPlayer.Speed > b.VillainPlayer.Speed {
 			log.Printf("%s\n", "Hero has higher speed, so he attacks first")
 			b.InitSetHeroAttacker()
@@ -69,7 +69,7 @@ func (b *Battle) Duel() {
 			}
 		}
 
-		b.Engine.FirstTurnPlayed = true
+		b.Engine.SetFirstTurnPlayed()
 	}
 
 	b.Engine.Attack()

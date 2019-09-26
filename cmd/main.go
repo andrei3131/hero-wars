@@ -8,7 +8,6 @@ import (
 	"github.com/hero-wars/config"
 	"github.com/hero-wars/game"
 	"github.com/hero-wars/player"
-	
 
 	"github.com/briandowns/spinner"
 )
@@ -78,7 +77,12 @@ func main() {
 	fmt.Printf("Hero Player: %s\nHero Special: %s\n", heroPlayer, heroSpecial)
 	fmt.Printf("Villain Player: %s\n", villainPlayer)
 
-	battle := game.NewBattle(heroPlayer, heroSpecial, villainPlayer)
+	strikeEnginge := &game.StrikeEngine{
+		FirstTurnPlayed:          false,
+		ResiliencePreviouslyUsed: false,
+	}
+
+	battle := game.NewBattle(heroPlayer, heroSpecial, villainPlayer, strikeEnginge)
 
 	gameLoop(battle)
 }

@@ -2,15 +2,15 @@ package config
 
 import (
 	"errors"
+	"fmt"
 	"gopkg.in/yaml.v2"
 	"log"
-	"fmt"
 	"os"
 )
 
 var MAX_ROUNDS = 20
-var CONFIG_FILE  = "config.yml"
-var HERO_NAME    = "Hero"
+var CONFIG_FILE = "config.yml"
+var HERO_NAME = "Hero"
 var VILLAIN_NAME = "Villain"
 var WAR_STORY = fmt.Sprintf("%s walks the whimsical forests of the Terminal Valley and he encounters a nefarious %s.\n", HERO_NAME, VILLAIN_NAME)
 
