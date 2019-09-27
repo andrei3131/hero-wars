@@ -4,7 +4,7 @@
 
 Player configurations are specified in config.yml.
 
-## 1. Build & run locally in an environment where Go is installed
+## 1. Build & run locally in an environment where Go is installed (Requires Go set-up)
 
 ```
 cd hero-wars
@@ -13,7 +13,7 @@ make test (This is optional)
 ./bin/hero-wars
 ```
 
-## 2. Build & run locally using Docker
+## 2. Build & run locally using Docker (Easy Docker set-up)
 
 ### Build Docker image
 
@@ -29,7 +29,7 @@ This will run a simulation of the game during the lifetime of this container.
 docker run -it hero-wars
 ```
 
-## 3. Pull already built image from Docker Hub and run the simulation
+## 3. Pull already built image from Docker Hub and run the simulation (Easy Docker set-up)
 
 
 The commands below directly run the simulation in a Docker container.
