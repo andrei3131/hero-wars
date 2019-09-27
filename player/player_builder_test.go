@@ -1,7 +1,6 @@
 package player_test
 
 import (
-	//"log"
 	"fmt"
 
 	gomock "github.com/golang/mock/gomock"
@@ -71,7 +70,7 @@ var _ = Describe("PlayerBuilder", func() {
 
 })
 
-var _ = Describe("Player Builder Range Correctness", func() {
+var _ = Describe("Player Builder Range Correctness over a large number of generations", func() {
 	cfg, _ := config.ReadConfig("../" + config.CONFIG_FILE)
 
 	heroBuilder := player.NewHero(cfg)

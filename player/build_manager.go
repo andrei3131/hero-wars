@@ -1,7 +1,5 @@
 package player
 
-// import "log"
-
 type BuildManager struct {
 	playerBuilder PlayerBuilder
 }

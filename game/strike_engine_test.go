@@ -1,11 +1,8 @@
 package game_test
 
 import (
-	//"log"
-
 	gomock "github.com/golang/mock/gomock"
 	. "github.com/onsi/ginkgo"
-	// . "github.com/onsi/gomega"
 
 	"github.com/andrei3131/hero-wars/config"
 	"github.com/andrei3131/hero-wars/game"
@@ -18,9 +15,6 @@ var _ = Describe("Strike Engine Flow Test", func() {
 		heroPlayer    *player.Player
 		heroSpecial   *player.Special
 		villainPlayer *player.Player
-
-		// strikeEngineMockCallAttack    *gomock.Call
-		// strikeEngineMockCallDefence    *gomock.Call
 
 		mockStrikeEngine *mocks.MockStrikeEngineInterface
 		mockCtrl         *gomock.Controller //gomock struct

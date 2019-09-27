@@ -46,11 +46,12 @@ func (strikeEngine *StrikeEngine) strike(attacker, defender string, generator *r
 func (strikeEngine *StrikeEngine) subtractDefenderDamage(attacker, defender string, damage int) {
 	oldDefederHealth := strikeEngine.DefenderPlayer.Health
 	strikeEngine.DefenderPlayer.Health -= damage
-	log.Printf("Following %s's attack, the %s loses %d of his health: Defender Health was %d, Defender Health becomes %d\n",
-		attacker, defender, damage, oldDefederHealth, strikeEngine.DefenderPlayer.Health)
 	if strikeEngine.DefenderPlayer.Health < 0 {
+		log.Printf("Heavy damage: Defender's health is now negative %d, capping at 0.\n", strikeEngine.DefenderPlayer.Health)
 		strikeEngine.DefenderPlayer.Health = 0
 	}
+	log.Printf("Following %s's attack, the %s loses %d of his health: Defender Health was %d, Defender Health becomes %d\n",
+		attacker, defender, damage, oldDefederHealth, strikeEngine.DefenderPlayer.Health)
 }
 
 func (strikeEngine *StrikeEngine) UpdateStrikeEngine(attackerPlayer *player.Player,
