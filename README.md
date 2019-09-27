@@ -2,7 +2,7 @@
 
 # Running Hero Wars
 
-## 1. Build & run locally
+## 1. Build & run locally in an environment where Go is installed
 
 ```
 cd hero-wars
