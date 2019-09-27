@@ -15,4 +15,5 @@ COPY . .
 RUN make build
 RUN make test
 
+# Remove the boot command if you want an interactive console to your container.
 CMD ["./bin/hero-wars"]

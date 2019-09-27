@@ -2,6 +2,8 @@
 
 # Running Hero Wars
 
+Player configurations are specified in config.yml.
+
 ## 1. Build & run locally in an environment where Go is installed
 
 ```
@@ -29,9 +31,18 @@ docker run -it hero-wars
 
 ## 3. Pull already built image from Docker Hub and run the simulation
 
+
+The commands below directly run the simulation in a Docker container.
 ```
-docker pull andrei3131/hero-wars
+docker pull andrei3131/hero-wars:latest
 docker run -it hero-wars
 ```
+
+The commands below allow the user to modify the configuration file of the heros (config.yml), by providing an interactive console to the container.
+```
+docker pull andrei3131/hero-wars:configurable
+docker run -it hero-wars:configurable
+```
+
 
 
