@@ -7,7 +7,7 @@ VERSION = 0.0.1-dev
 test:
 	go get github.com/golang/mock/gomock
 	go get github.com/golang/mock/mockgen
-	export PATH=$PATH:~/go/bin/
+	export PATH=${PATH}:${GOPATH}/bin/
 	go generate ./...
 	go test -v github.com/andrei3131/hero-wars/...
 
