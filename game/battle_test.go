@@ -4,28 +4,26 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"github.com/andrei3131/hero-wars/player"
 	"github.com/andrei3131/hero-wars/game"
-
+	"github.com/andrei3131/hero-wars/player"
 )
 
 var _ = Describe("Battle Hero Starts", func() {
-	heroPlayer := &player.Player {
-		Health   : 1,
-		Strength : 1,
-		Defence  : 1,
-		Speed    : 2,
-		Luck     : 0.1,
+	heroPlayer := &player.Player{
+		Health:   1,
+		Strength: 1,
+		Defence:  1,
+		Speed:    2,
+		Luck:     0.1,
 	}
 
-	villainPlayer := &player.Player {
-		Health   : 1,
-		Strength : 1,
-		Defence  : 1,
-		Speed    : 1,
-		Luck     : 0.1,
+	villainPlayer := &player.Player{
+		Health:   1,
+		Strength: 1,
+		Defence:  1,
+		Speed:    1,
+		Luck:     0.1,
 	}
-
 
 	battle := game.NewBattle(heroPlayer, &player.Special{}, villainPlayer, &game.StrikeEngine{})
 
@@ -42,25 +40,23 @@ var _ = Describe("Battle Hero Starts", func() {
 		})
 	})
 })
-
 
 var _ = Describe("Battle Villain Starts", func() {
-	heroPlayer := &player.Player {
-		Health   : 1,
-		Strength : 1,
-		Defence  : 1,
-		Speed    : 1,
-		Luck     : 0.1,
+	heroPlayer := &player.Player{
+		Health:   1,
+		Strength: 1,
+		Defence:  1,
+		Speed:    1,
+		Luck:     0.1,
 	}
 
-	villainPlayer := &player.Player {
-		Health   : 1,
-		Strength : 1,
-		Defence  : 1,
-		Speed    : 2,
-		Luck     : 0.1,
+	villainPlayer := &player.Player{
+		Health:   1,
+		Strength: 1,
+		Defence:  1,
+		Speed:    2,
+		Luck:     0.1,
 	}
-
 
 	battle := game.NewBattle(heroPlayer, &player.Special{}, villainPlayer, &game.StrikeEngine{})
 
@@ -76,26 +72,23 @@ var _ = Describe("Battle Villain Starts", func() {
 		})
 	})
 })
-
-
 
 var _ = Describe("Battle When Speeds Equal, Highest Luck starts (Villain Luckier)", func() {
-	heroPlayer := &player.Player {
-		Health   : 1,
-		Strength : 1,
-		Defence  : 1,
-		Speed    : 1,
-		Luck     : 0.1,
+	heroPlayer := &player.Player{
+		Health:   1,
+		Strength: 1,
+		Defence:  1,
+		Speed:    1,
+		Luck:     0.1,
 	}
 
-	villainPlayer := &player.Player {
-		Health   : 1,
-		Strength : 1,
-		Defence  : 1,
-		Speed    : 1,
-		Luck     : 0.5,
+	villainPlayer := &player.Player{
+		Health:   1,
+		Strength: 1,
+		Defence:  1,
+		Speed:    1,
+		Luck:     0.5,
 	}
-
 
 	battle := game.NewBattle(heroPlayer, &player.Special{}, villainPlayer, &game.StrikeEngine{})
 
@@ -112,24 +105,22 @@ var _ = Describe("Battle When Speeds Equal, Highest Luck starts (Villain Luckier
 	})
 })
 
-
 var _ = Describe("Battle When Speeds Equal, Highest Luck starts (Hero Luckier)", func() {
-	heroPlayer := &player.Player {
-		Health   : 1,
-		Strength : 1,
-		Defence  : 1,
-		Speed    : 1,
-		Luck     : 0.2,
+	heroPlayer := &player.Player{
+		Health:   1,
+		Strength: 1,
+		Defence:  1,
+		Speed:    1,
+		Luck:     0.2,
 	}
 
-	villainPlayer := &player.Player {
-		Health   : 1,
-		Strength : 1,
-		Defence  : 1,
-		Speed    : 1,
-		Luck     : 0.1,
+	villainPlayer := &player.Player{
+		Health:   1,
+		Strength: 1,
+		Defence:  1,
+		Speed:    1,
+		Luck:     0.1,
 	}
-
 
 	battle := game.NewBattle(heroPlayer, &player.Special{}, villainPlayer, &game.StrikeEngine{})
 
@@ -146,30 +137,26 @@ var _ = Describe("Battle When Speeds Equal, Highest Luck starts (Hero Luckier)",
 	})
 })
 
-
-
 var _ = Describe("A duel attack/defend/attack/defend leaves roles unchanged", func() {
-	heroPlayer := &player.Player {
-		Health   : 1,
-		Strength : 1,
-		Defence  : 1,
-		Speed    : 1,
-		Luck     : 0.2,
+	heroPlayer := &player.Player{
+		Health:   1,
+		Strength: 1,
+		Defence:  1,
+		Speed:    1,
+		Luck:     0.2,
 	}
 
-	villainPlayer := &player.Player {
-		Health   : 1,
-		Strength : 1,
-		Defence  : 1,
-		Speed    : 1,
-		Luck     : 0.1,
+	villainPlayer := &player.Player{
+		Health:   1,
+		Strength: 1,
+		Defence:  1,
+		Speed:    1,
+		Luck:     0.1,
 	}
-
 
 	heroSpecial := &player.Special{}
 	battle := game.NewBattle(heroPlayer, heroSpecial, villainPlayer, &game.StrikeEngine{})
 
-	
 	// Hero starts, he is luckiest
 	Describe("A duel", func() {
 		Context("When hero starts first (any could start)", func() {

@@ -8,7 +8,6 @@ import (
 	"github.com/andrei3131/hero-wars/player"
 )
 
-
 type EngineInterface interface {
 	Attack()
 	SwitchRoles()
