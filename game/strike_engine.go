@@ -90,14 +90,14 @@ func (strikeEngine *StrikeEngine) Attack(attacker, defender string,
 		if generator.Float64() < strikeEngine.AttackerSpecial.CriticalStrike.StrikeTwiceProbability {
 			// Hero strikes twice (Special Skill)
 			log.Printf("%s uses his special skill and strikes second time", attacker)
-			strikeEngine.strike(attacker, defender, generator)
+			damage = strikeEngine.strike(attacker, defender, generator)
 			strikeEngine.subtractDefenderDamage(attacker, defender, damage)
 			strikeEngine.printStats(attacker, defender)
 
 			if generator.Float64() < strikeEngine.AttackerSpecial.CriticalStrike.StrikeThirdGivenTwiceProbability {
 				// Hero strikes third time given he has struck twice on this turn (Special Skill)
 				log.Printf("%s uses his special skill and strikes third time", attacker)
-				strikeEngine.strike(attacker, defender, generator)
+				damage = strikeEngine.strike(attacker, defender, generator)
 				strikeEngine.subtractDefenderDamage(attacker, defender, damage)
 				strikeEngine.printStats(attacker, defender)
 			}
